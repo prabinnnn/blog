@@ -5,4 +5,4 @@ const bookSchema = new Schema({
   createdAt: { type: String, default: Date.now },
   updateAt: { type: String, default: Date.now },
 });
-module.exports = new model("Resgistration", bookSchema);
+module.exports = new model("Registration", bookSchema);

@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const userModel = require("./user.controller");
+const userController = require("./user.controller");
 const { validate } = require("./user.validator");
 router.get("/", async (req, res, next) => {
   try {
-    result = await userModel.get();
+    result = await userController.get();
     res.json({ msg: result });
   } catch (e) {
     next(e);
@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
 });
 router.get("/:id", async (req, res, next) => {
   try {
-    result = await userModel.getById(req.params.id);
+    result = await userController.getById(req.params.id);
     res.json({ msg: result });
   } catch (e) {
     next(e);
@@ -19,7 +19,7 @@ router.get("/:id", async (req, res, next) => {
 });
 router.post("/", validate, async (req, res, next) => {
   try {
-    result = await userModel.create(req.body);
+    result = await userController.create(req.body);
     res.json({ msg: result });
   } catch (e) {
     next(e);
@@ -27,7 +27,7 @@ router.post("/", validate, async (req, res, next) => {
 });
 router.put("/:id", async (req, res, next) => {
   try {
-    result = await userModel.updateById(req.body, req.params.id);
+    result = await userController.updateById(req.body, req.params.id);
     res.json({ msg: result });
   } catch (e) {
     next(e);
@@ -35,7 +35,7 @@ router.put("/:id", async (req, res, next) => {
 });
 router.patch("/:id", async (req, res, next) => {
   try {
-    result = await userModel.updateById(req.body, req.params.id);
+    result = await userController.updateById(req.body, req.params.id);
     res.json({ msg: result });
   } catch (e) {
     next(e);
@@ -44,7 +44,7 @@ router.patch("/:id", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    result = await userModel.removeById(req.params.id);
+    result = await userController.removeById(req.params.id);
     res.json({ msg: result });
   } catch (e) {
     next(e);
